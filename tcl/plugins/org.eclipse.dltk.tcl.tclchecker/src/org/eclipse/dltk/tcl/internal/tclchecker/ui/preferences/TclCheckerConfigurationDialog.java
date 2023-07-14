@@ -24,7 +24,7 @@ import org.eclipse.dltk.validators.configs.ValidatorsPackage;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.databinding.EMFObservables;
-import org.eclipse.jface.databinding.swt.SWTObservables;
+import org.eclipse.jface.databinding.swt.typed.WidgetProperties;
 import org.eclipse.jface.dialogs.StatusDialog;
 import org.eclipse.jface.layout.TreeColumnLayout;
 import org.eclipse.jface.viewers.CellEditor;
@@ -270,7 +270,7 @@ public class TclCheckerConfigurationDialog extends StatusDialog {
 		nameLabel.setText(Messages.TclCheckerConfigurationDialog_ConfigurationName);
 		name = new Text(parent, SWT.BORDER);
 		name.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		bindingContext.bindValue(SWTObservables.observeText(name, SWT.Modify),
+		bindingContext.bindValue(WidgetProperties.text(SWT.Modify).observe(name),
 				EMFObservables.observeValue(instance, ValidatorsPackage.Literals.VALIDATOR_CONFIG__NAME), null, null);
 	}
 
@@ -310,14 +310,14 @@ public class TclCheckerConfigurationDialog extends StatusDialog {
 		nameLabel.setText(Messages.TclCheckerConfigurationDialog_CommandLineOptions);
 		commandLineOptions = new Text(group, SWT.BORDER);
 		commandLineOptions.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		bindingContext.bindValue(SWTObservables.observeText(commandLineOptions, SWT.Modify), EMFObservables
+		bindingContext.bindValue(WidgetProperties.text(SWT.Modify).observe(commandLineOptions), EMFObservables
 				.observeValue(instance, ValidatorsPackage.Literals.VALIDATOR_CONFIG__COMMAND_LINE_OPTIONS), null, null);
 		summary = SWTFactory.createCheckButton(group, Messages.TclCheckerConfigurationDialog_Summary, null, false, 2);
-		bindingContext.bindValue(SWTObservables.observeSelection(summary),
+		bindingContext.bindValue(WidgetProperties.buttonSelection().observe(summary),
 				EMFObservables.observeValue(instance, ConfigsPackage.Literals.CHECKER_CONFIG__SUMMARY), null, null);
 		useTclVer = SWTFactory.createCheckButton(group, Messages.TclCheckerConfigurationDialog_UseTclVer, null, false,
 				2);
-		bindingContext.bindValue(SWTObservables.observeSelection(useTclVer),
+		bindingContext.bindValue(WidgetProperties.buttonSelection().observe(useTclVer),
 				EMFObservables.observeValue(instance, ConfigsPackage.Literals.CHECKER_CONFIG__USE_TCL_VER), null, null);
 	}
 
@@ -326,7 +326,7 @@ public class TclCheckerConfigurationDialog extends StatusDialog {
 				GridData.FILL_BOTH);
 		final Button individualMessageConfiguration = SWTFactory.createCheckButton(group,
 				Messages.TclCheckerConfigurationDialog_MessageConfiguration, null, false, 2);
-		bindingContext.bindValue(SWTObservables.observeSelection(individualMessageConfiguration), EMFObservables
+		bindingContext.bindValue(WidgetProperties.buttonSelection().observe(individualMessageConfiguration), EMFObservables
 				.observeValue(instance, ConfigsPackage.Literals.CHECKER_CONFIG__INDIVIDUAL_MESSAGE_STATES), null, null);
 		final Composite messageContainer = new Composite(group, SWT.NONE);
 		final GridLayout messageContainerLayout = new GridLayout(2, false);
