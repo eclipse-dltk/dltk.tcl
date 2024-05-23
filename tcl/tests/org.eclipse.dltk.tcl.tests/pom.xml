@@ -5,12 +5,12 @@
   <parent>
     <artifactId>tcl.tests</artifactId>
     <groupId>org.eclipse.dltk.tcl</groupId>
-    <version>6.4.0-SNAPSHOT</version>
+    <version>6.4.1-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
   <groupId>org.eclipse.dltk.tcl</groupId>
   <artifactId>org.eclipse.dltk.tcl.tests</artifactId>
-  <version>6.4.0-SNAPSHOT</version>
+  <version>6.4.1-SNAPSHOT</version>
   <packaging>eclipse-test-plugin</packaging>
   <build>
 	  <plugins>
